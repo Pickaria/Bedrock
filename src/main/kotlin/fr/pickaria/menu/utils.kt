@@ -5,9 +5,8 @@ import org.bukkit.entity.Player
 import org.bukkit.event.inventory.InventoryClickEvent
 
 internal typealias ClickHandler = ((InventoryClickEvent) -> Unit)
-internal typealias BuilderInit<T> = T.() -> Unit
+typealias BuilderInit<T> = T.() -> Unit
 
-internal const val DEFAULT_MENU = "home"
 internal val builders: MutableMap<String, BuilderInit<Menu.Builder>> = mutableMapOf()
 
 data class Entry(val key: String, val init: BuilderInit<Menu.Builder>)

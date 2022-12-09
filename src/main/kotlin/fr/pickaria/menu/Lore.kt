@@ -33,10 +33,10 @@ class Lore {
 	}
 
 	companion object {
-		internal operator fun invoke(init: BuilderInit<Lore>) = Lore().apply(init)
+		operator fun invoke(init: BuilderInit<Lore>) = Lore().apply(init)
 	}
 
-	internal fun build() = mutableListOf<Component>().apply {
+	fun build() = mutableListOf<Component>().apply {
 		addAll(description)
 
 		if (description.isNotEmpty() && keyValues.isNotEmpty()) {

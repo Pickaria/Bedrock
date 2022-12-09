@@ -3,10 +3,16 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     kotlin("jvm") version "1.7.20"
     `maven-publish`
+    java
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 group = "fr.pickaria"
-version = "1.0-SNAPSHOT"
+version = "1.0.1-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -38,8 +44,8 @@ publishing {
     publications {
         create<MavenPublication>("maven") {
             groupId = "fr.pickaria"
-            artifactId = "redstone"
-            version = "1.1-SNAPSHOT"
+            artifactId = "bedrock"
+            version = "1.0.1-SNAPSHOT"
 
             from(components["java"])
         }

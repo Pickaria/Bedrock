@@ -14,3 +14,5 @@ fun JavaPlugin.enableBedrockLibrary() {
 	server.pluginManager.registerEvents(Listeners(), this)
 	GlowEnchantment.register(this)
 }
+
+var DEFAULT_MENU: String = "home"
