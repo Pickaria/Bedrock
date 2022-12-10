@@ -17,6 +17,7 @@ fun register(name: String, builder: BuilderInit<Menu.Builder>): Entry {
 	}
 
 	builders[name] = builder
+	Bukkit.getServer().logger.fine("Menu `$name` registered.")
 
 	return Entry(name, builder)
 }
