@@ -1,5 +1,6 @@
 package fr.pickaria.shared
 
+import io.papermc.paper.inventory.ItemRarity
 import net.kyori.adventure.key.Key
 import net.kyori.adventure.sound.Sound
 import net.kyori.adventure.text.Component
@@ -7,6 +8,7 @@ import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.NamespacedKey
 import org.bukkit.configuration.ConfigurationSection
+import org.bukkit.enchantments.EnchantmentTarget
 import org.bukkit.loot.LootTable
 import kotlin.reflect.KClass
 import kotlin.reflect.KProperty
@@ -57,6 +59,18 @@ open class ConfigProvider(var section: ConfigurationSection? = null) {
 
 				Sound::class -> {
 					section?.getString(this)?.let { Sound.sound(Key.key(it), Sound.Source.MASTER, 1f, 1f) } as? T
+				}
+
+				ItemRarity::class -> {
+					section?.getString(property.name.toSnakeCase())?.let {
+						ItemRarity.valueOf(it)
+					} as? T
+				}
+
+				EnchantmentTarget::class -> {
+					section?.getString(property.name.toSnakeCase())?.let {
+						EnchantmentTarget.valueOf(it)
+					} as? T
 				}
 
 				else -> {
