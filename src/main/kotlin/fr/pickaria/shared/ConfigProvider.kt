@@ -7,9 +7,12 @@ import net.kyori.adventure.text.Component
 import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.NamespacedKey
+import org.bukkit.World
 import org.bukkit.configuration.ConfigurationSection
 import org.bukkit.enchantments.EnchantmentTarget
+import org.bukkit.entity.Villager
 import org.bukkit.loot.LootTable
+import java.util.UUID
 import kotlin.reflect.KClass
 import kotlin.reflect.KProperty
 
@@ -70,6 +73,24 @@ open class ConfigProvider(var section: ConfigurationSection? = null) {
 				EnchantmentTarget::class -> {
 					section?.getString(property.name.toSnakeCase())?.let {
 						EnchantmentTarget.valueOf(it)
+					} as? T
+				}
+
+				Villager.Profession::class -> {
+					section?.getString(property.name.toSnakeCase())?.let {
+						Villager.Profession.valueOf(it)
+					} as? T
+				}
+
+				Villager.Type::class -> {
+					section?.getString(property.name.toSnakeCase())?.let {
+						Villager.Type.valueOf(it)
+					} as? T
+				}
+
+				UUID::class -> {
+					section?.getString(property.name.toSnakeCase())?.let {
+						UUID.fromString(it)
 					} as? T
 				}
 
