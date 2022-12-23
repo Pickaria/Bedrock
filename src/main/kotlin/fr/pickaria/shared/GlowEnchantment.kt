@@ -8,14 +8,13 @@ import org.bukkit.enchantments.EnchantmentTarget
 import org.bukkit.entity.EntityCategory
 import org.bukkit.inventory.EquipmentSlot
 import org.bukkit.inventory.ItemStack
-import org.bukkit.plugin.java.JavaPlugin
 
 class GlowEnchantment(namespace: NamespacedKey): Enchantment(namespace) {
 	companion object {
 		lateinit var instance: Enchantment
 
-		fun register(plugin: JavaPlugin) {
-			val enchantmentNamespace = NamespacedKey(plugin, "enchantment")
+		fun register() {
+			val enchantmentNamespace = NamespacedKey("pickaria", "enchantment")
 			instance = GlowEnchantment(enchantmentNamespace)
 
 			try {

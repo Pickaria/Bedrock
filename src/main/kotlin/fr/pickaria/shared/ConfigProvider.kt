@@ -1,6 +1,7 @@
 package fr.pickaria.shared
 
 import io.papermc.paper.inventory.ItemRarity
+import net.kyori.adventure.bossbar.BossBar
 import net.kyori.adventure.key.Key
 import net.kyori.adventure.sound.Sound
 import net.kyori.adventure.text.Component
@@ -91,6 +92,24 @@ open class ConfigProvider(var section: ConfigurationSection? = null) {
 				UUID::class -> {
 					section?.getString(property.name.toSnakeCase())?.let {
 						UUID.fromString(it)
+					} as? T
+				}
+
+				World::class -> {
+					section?.getString(property.name.toSnakeCase())?.let {
+						Bukkit.getWorld(it)
+					} as? T
+				}
+
+				World::class -> {
+					section?.getString(property.name.toSnakeCase())?.let {
+						Bukkit.getWorld(it)
+					} as? T
+				}
+
+				BossBar.Color::class -> {
+					section?.getString(property.name.toSnakeCase())?.let {
+						BossBar.Color.valueOf(it)
 					} as? T
 				}
 

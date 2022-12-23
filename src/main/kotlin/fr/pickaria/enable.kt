@@ -11,7 +11,7 @@ import org.bukkit.plugin.java.JavaPlugin
 fun JavaPlugin.enableBedrockLibrary() {
 	getCommand("menu")?.setExecutor(Command()) ?: logger.severe("Cannot register command `menu`, did you forgot to add the command to plugin.yml?")
 	server.pluginManager.registerEvents(Listeners(), this)
-	GlowEnchantment.register(this)
+	GlowEnchantment.register()
 }
 
 var DEFAULT_MENU: String = "home"
