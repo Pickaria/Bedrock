@@ -99,20 +99,30 @@ data class Item(
 				position = Pair(value % 9, value / 9)
 			}
 
-		private var meta: ((ItemMeta) -> Unit)? = null
+		private var metaEditor: ((ItemMeta) -> Unit)? = null
+		private var meta: ItemMeta? = null
 
 		fun editMeta(consumer: (ItemMeta) -> Unit) {
-			meta = consumer
+			metaEditor = consumer
+		}
+
+		@ItemBuilderUnsafe
+		fun setMeta(itemMeta: ItemMeta) {
+			meta = itemMeta
 		}
 
 		private val itemStack: ItemStack
 			get() {
 				val itemStack = ItemStack(material)
 
+				meta?.let {
+					itemStack.itemMeta = it
+				}
+
 				itemStack.editMeta {
 					it.displayName(title)
 					it.lore(lore)
-					meta?.invoke(it)
+					metaEditor?.invoke(it)
 				}
 
 				return itemStack
