@@ -83,6 +83,8 @@ data class Item(
 
 		var material: Material = Material.AIR
 
+		var amount: Int = 1
+
 		var title: Component? = null
 			set(value) {
 				field = value?.decoration(TextDecoration.ITALIC, TextDecoration.State.FALSE)
@@ -113,7 +115,7 @@ data class Item(
 
 		private val itemStack: ItemStack
 			get() {
-				val itemStack = ItemStack(material)
+				val itemStack = ItemStack(material, amount)
 
 				meta?.let {
 					itemStack.itemMeta = it
