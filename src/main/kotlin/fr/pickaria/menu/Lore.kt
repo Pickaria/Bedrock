@@ -30,6 +30,10 @@ class Lore {
 				.decoration(TextDecoration.ITALIC, TextDecoration.State.FALSE)
 			description.add(component)
 		}
+
+		operator fun Component.unaryMinus() {
+			description.add(this)
+		}
 	}
 
 	companion object {
