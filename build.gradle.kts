@@ -12,7 +12,7 @@ java {
 }
 
 group = "fr.pickaria"
-version = "1.0.15-SNAPSHOT"
+version = "1.0.17-SNAPSHOT"
 
 repositories {
 	mavenCentral()
@@ -43,10 +43,7 @@ publishing {
 
 	publications {
 		create<MavenPublication>("maven") {
-			groupId = "fr.pickaria"
 			artifactId = "bedrock"
-			version = "1.0.15-SNAPSHOT"
-
 			from(components["java"])
 		}
 	}

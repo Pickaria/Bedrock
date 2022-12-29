@@ -1,6 +1,7 @@
 package fr.pickaria.menu
 
 import net.kyori.adventure.text.Component
+import net.kyori.adventure.text.ComponentLike
 import net.kyori.adventure.text.format.NamedTextColor
 import net.kyori.adventure.text.format.TextDecoration
 
@@ -14,11 +15,19 @@ class Lore {
 
 	inner class KeyValuesBuilder {
 		infix fun String.to(value: Any) {
-			val component = Component.text(this, NamedTextColor.GOLD)
-				.append(Component.text(" : ", NamedTextColor.GOLD))
-				.append(Component.text(value.toString(), NamedTextColor.GRAY))
-				.decoration(TextDecoration.ITALIC, TextDecoration.State.FALSE)
-			keyValues.add(component)
+			if (value is Component) {
+				val component = Component.text(this, NamedTextColor.GOLD)
+					.append(Component.text(" : ", NamedTextColor.GOLD))
+					.append(value.color(NamedTextColor.GRAY))
+					.decoration(TextDecoration.ITALIC, TextDecoration.State.FALSE)
+				keyValues.add(component)
+			} else {
+				val component = Component.text(this, NamedTextColor.GOLD)
+					.append(Component.text(" : ", NamedTextColor.GOLD))
+					.append(Component.text(value.toString(), NamedTextColor.GRAY))
+					.decoration(TextDecoration.ITALIC, TextDecoration.State.FALSE)
+				keyValues.add(component)
+			}
 		}
 	}
 
