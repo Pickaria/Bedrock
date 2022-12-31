@@ -4,6 +4,7 @@ import fr.pickaria.shared.MiniMessage.Companion.miniMessage
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.format.NamedTextColor
 import org.bukkit.Material
+import org.bukkit.advancement.Advancement
 import org.bukkit.entity.HumanEntity
 import org.bukkit.entity.Player
 import org.bukkit.inventory.Inventory
@@ -16,7 +17,8 @@ fun Player.updateDisplayName() {
 	val displayName = prefix()
 		.append(name().color(NamedTextColor.WHITE))
 		.append(suffix())
-	this.displayName(displayName)
+	displayName(displayName)
+	playerListName(displayName)
 }
 
 var Player.prefix: String
@@ -40,6 +42,13 @@ fun Player.suffix(): Component = suffix.let {
 		Component.text(" ").append(miniMessage.deserialize(it))
 	} else {
 		Component.empty()
+	}
+}
+
+fun Player.grantAdvancement(advancement: Advancement) {
+	val progress = getAdvancementProgress(advancement)
+	progress.remainingCriteria.forEach {
+		progress.awardCriteria(it)
 	}
 }
 
