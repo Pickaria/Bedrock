@@ -12,7 +12,7 @@ java {
 }
 
 group = "fr.pickaria"
-version = "1.0.19-SNAPSHOT"
+version = "1.0.20-SNAPSHOT"
 
 repositories {
 	mavenCentral()
@@ -30,7 +30,7 @@ dependencies {
 	implementation(kotlin("stdlib"))
 	implementation(kotlin("reflect"))
 	compileOnly("com.github.MilkBowl:VaultAPI:1.7.1")
-	compileOnly("io.papermc.paper:paper-api:1.19.4-R0.1-SNAPSHOT")
+	compileOnly("io.papermc.paper:paper-api:1.20.1-R0.1-SNAPSHOT")
 }
 
 publishing {
