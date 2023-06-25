@@ -12,7 +12,7 @@ java {
 }
 
 group = "fr.pickaria"
-version = "1.0.20-SNAPSHOT"
+version = "1.0.21"
 
 repositories {
 	mavenCentral()

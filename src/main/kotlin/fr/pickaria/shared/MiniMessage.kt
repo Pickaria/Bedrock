@@ -13,7 +13,7 @@ class MiniMessage(value: String, init: (KeyValuesBuilder.() -> Unit)? = null) {
 	}
 
 	private var placeholders: MutableList<TagResolver> = mutableListOf()
-	val message: Component
+	private val message: Component
 
 	inner class KeyValuesBuilder {
 		infix fun String.to(value: Component) {
@@ -32,7 +32,10 @@ class MiniMessage(value: String, init: (KeyValuesBuilder.() -> Unit)? = null) {
 		}
 	}
 
-	operator fun unaryPlus(): Component = message
+	@Deprecated(message = "Please use toComponent() instead", replaceWith = ReplaceWith("toComponent()"))
+	operator fun unaryPlus(): Component = toComponent()
+
+	fun toComponent(): Component = message
 
 	init {
 		if (init != null) {
