@@ -41,7 +41,7 @@ data class Item(
 
 		when (click.first) {
 			Result.CLOSE -> event.inventory.close()
-			Result.PREVIOUS -> menu.previous?.let { player open it }
+			Result.PREVIOUS -> menu.previous?.let { player.open(it) }
 			Result.REFRESH -> menu.rebuild()
 			Result.NONE -> {}
 		}

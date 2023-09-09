@@ -37,32 +37,32 @@ fun menu(name: String, init: BuilderInit<Menu.Builder>) = register(name, init)
 /**
  * Opens an already instantiated menu.
  */
-infix fun Player.open(menu: Menu) {
+fun Player.open(menu: Menu) {
 	openInventory(menu.inventory())
 }
 
 /**
  * Builds and opens a menu at a given page.
  */
-infix fun Player.open(init: BuilderInit<Menu.Builder>) {
+fun Player.open(init: BuilderInit<Menu.Builder>) {
 	val previous = (openInventory.topInventory.holder as? Holder)?.menu
-	this open Menu(init, this@open, previous, 0).build()
+	open(Menu(init, this@open, previous, 0).build())
 }
 
 /**
  * Builds and opens a menu at a given page.
  */
 fun Player.open(init: BuilderInit<Menu.Builder>, previous: Menu?) {
-	this open Menu(init, this@open, previous, 0).build()
+	open(Menu(init, this@open, previous, 0).build())
 }
 
 /**
  * Builds and opens a menu at a given page.
  */
-infix fun Player.open(menu: String): Boolean =
+fun Player.open(menu: String): Boolean =
 	builders[menu]?.let {
 		val previous = (openInventory.topInventory.holder as? Holder)?.menu
-		this open Menu(it, this@open, previous, 0, menu).build()
+		open(Menu(it, this@open, previous, 0, menu).build())
 		true
 	} ?: false
 
@@ -72,6 +72,10 @@ infix fun Player.open(menu: String): Boolean =
 fun Player.open(menu: String, page: Int): Boolean =
 	builders[menu]?.let {
 		val previous = (openInventory.topInventory.holder as? Holder)?.menu?.previous
-		this open Menu(it, this@open, previous, page, menu).build()
+		open(Menu(it, this@open, previous, page, menu).build())
 		true
 	} ?: false
+
+fun Player.isInMenu(): Boolean = openInventory.topInventory.holder as? Holder != null
+
+fun Player.getCurrentMenu(): Menu? = (openInventory.topInventory.holder as? Holder)?.menu

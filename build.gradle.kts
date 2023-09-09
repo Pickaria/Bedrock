@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	kotlin("jvm") version "1.8.20"
+	kotlin("jvm") version "1.9.10"
 	`maven-publish`
 	java
 }
@@ -12,7 +12,7 @@ java {
 }
 
 group = "fr.pickaria"
-version = "1.0.21"
+version = "1.0.22"
 
 repositories {
 	mavenCentral()
