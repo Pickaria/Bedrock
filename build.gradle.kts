@@ -12,7 +12,7 @@ java {
 }
 
 group = "fr.pickaria"
-version = "1.1.0"
+version = "1.1.1"
 
 repositories {
 	mavenCentral()
@@ -35,11 +35,14 @@ dependencies {
 publishing {
 	repositories {
 		maven {
-			name = "GitHubPackages"
-			url = uri("https://maven.pkg.github.com/Pickaria/Bedrock")
+			name = "pickariaRepositoryReleases"
+			url = uri("https://maven.pickaria.fr/releases")
 			credentials {
-				username = System.getenv("GITHUB_ACTOR")
-				password = System.getenv("GITHUB_TOKEN")
+				username = System.getenv("MAVEN_USERNAME") ?: property("mavenUser").toString()
+				password = System.getenv("MAVEN_PASSWORD") ?: property("mavenPassword").toString()
+			}
+			authentication {
+				create<BasicAuthentication>("basic")
 			}
 		}
 	}
