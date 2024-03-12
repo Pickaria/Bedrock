@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	kotlin("jvm") version "1.9.10"
+	kotlin("jvm") version "1.9.22"
 	`maven-publish`
 	java
 }
@@ -12,14 +12,13 @@ java {
 }
 
 group = "fr.pickaria"
-version = "1.0.22"
+version = "1.1.0"
 
 repositories {
 	mavenCentral()
 	maven("https://jitpack.io")
 	maven("https://oss.sonatype.org/content/groups/public/")
 	maven("https://repo.papermc.io/repository/maven-public/")
-	maven("https://maven.quozul.dev/snapshots")
 }
 
 tasks.withType<KotlinCompile> {
@@ -30,7 +29,7 @@ dependencies {
 	implementation(kotlin("stdlib"))
 	implementation(kotlin("reflect"))
 	compileOnly("com.github.MilkBowl:VaultAPI:1.7.1")
-	compileOnly("io.papermc.paper:paper-api:1.20.1-R0.1-SNAPSHOT")
+	compileOnly("io.papermc.paper:paper-api:1.20.4-R0.1-SNAPSHOT")
 }
 
 publishing {

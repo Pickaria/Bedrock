@@ -32,9 +32,6 @@ class MiniMessage(value: String, init: (KeyValuesBuilder.() -> Unit)? = null) {
 		}
 	}
 
-	@Deprecated(message = "Please use toComponent() instead", replaceWith = ReplaceWith("toComponent()"))
-	operator fun unaryPlus(): Component = toComponent()
-
 	fun toComponent(): Component = message
 
 	init {
